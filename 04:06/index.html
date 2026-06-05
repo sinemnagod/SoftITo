@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <button id="change"> Değiştir </button>
+    <p id="yazi"> Merhaba </p>
+
+    <script>
+        // onClick yerine bu şekilde yazıyoruz ki tekrar tekrar kullanabilelim
+        const buton= document.getElementById('change');
+        const yazi = document.getElementById('yazi');
+        buton.addEventListener('click', function() {
+            yazi.textContent='Butona tıklandı';
+        });
+    </script>
+</body>
+</html>

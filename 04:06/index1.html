@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <button id="change">Değiştir</button>
+    <h1 id="yazi">Butona Bas</h1>
+
+    <script>
+        const buton = document.getElementById('change');
+        const yazi = document.getElementById('yazi');
+        let count = 0;
+        buton.addEventListener('click', function(){
+            count++;
+            if(count % 2 == 0) {
+                yazi.textContent = "çift kere tıklandı";
+            } else {
+                yazi.textContent = "tek kere tıklandı";
+            }
+        });
+
+        
+    </script>
+</body>
+</html>

@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <form id="bilgi-formu">
+        <label for="isim">İsim: </label>
+        <input type="text" id="isim"> <br>
+        <label for="soyad">Soyad: </label>
+        <input type="text" id="soyad"> <br>
+        <label for="tel">Telefon: </label>
+        <input type="tel" id="tel"> <br>
+        <label for="pic">Bir resim yükleyin: </label>
+        <input type="url" id="pic"> <br>
+        <button id="buton">Gönder</button>
+    </form>
+
+        <script>
+            const form = document.getElementById("bilgi-formu");
+            const sonucDiv = document.getElementById("sonuc");
+
+            form.addEventListener("submit", function (e){ 
+                e.preventDefault(); // form gönderildiğinde sayfanın yenilenmesini önler
+
+                const isim = document.getElementById("isim").value;
+                const soyad = document.getElementById("soyad").value;
+                const tel = document.getElementById("tel").value;
+                const resim = document.getElementById("pic");
+
+                document.getElementById("yaz-isim").textContent = isim;
+                document.getElementById("yaz-soyad").textContent = soyad;
+                document.getElementById("yaz-tel").textContent = tel;
+
+                const resimDosyası = resim.files[0];
+                const imgElement = document.getElementById("onizleme-resim");
+
+                if(resimDosyasi) {
+                    const reader = new fileReader();
+
+                    reader.onload = function(olay) {
+                        imgElement.src = olay.target.result;
+                        imgElement.style.display = "block";
+                    };
+
+                    reader.readAsDataURL(resimDosyasi);
+                } else {
+                    imgElement.style.display = "none";
+                }
+
+                sonucDiv.style.display = "block";
+            });
+        </script>
+</body>
+</html>
