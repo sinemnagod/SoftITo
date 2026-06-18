@@ -1,16 +1,15 @@
-import {useForm} from 'react-hook-form'
-export default function AddProductForm({categories,setView,onAddProduct}) {
-
+import { useForm } from "react-hook-form";
+export default function AddProductForm({ categories, setView, onAddProduct }) {
   const {
     register,
     handleSubmit,
     reset,
-    formState:{errors},
-  }=useForm()
-  const onSubmit=(data)=>{
+    formState: { errors },
+  } = useForm();
+  const onSubmit = (data) => {
     onAddProduct(data);
     reset();
-    setView('home');
+    setView("home");
   };
   return (
     <>
@@ -24,31 +23,37 @@ export default function AddProductForm({categories,setView,onAddProduct}) {
                 className="form-input"
                 type="text"
                 placeholder="Örn:Kablosuz Klavye"
-                {...register('title',{
-                  required:'Ürün adı zorunludur',
-                  minLength:{
-                    value:3,
-                    message:'Ürün adı en az 3 karakter olmalıdır'
-                  }
+                {...register("title", {
+                  required: "Ürün adı zorunludur",
+                  minLength: {
+                    value: 3,
+                    message: "Ürün adı en az 3 karakter olmalıdır",
+                  },
                 })}
               />
-              {errors.title &&(
-                <span className='form-error'>{errors.title.message}</span>
+              {errors.title && (
+                <span className="form-error">{errors.title.message}</span>
               )}
             </div>
             <div className="form-group">
               <label className="form-label">Kategori</label>
-              <select className="form-select"
-                {...register('category',{
-                    required: 'Kategori seçimi zorunludur'
-                })}>
+              <select
+                className="form-select"
+                {...register("category", {
+                  required: "Kategori seçimi zorunludur",
+                })}
+              >
                 <option value="">Seçiniz</option>
-                {categories.filter(c=>c !== 'Tümü').map(cat=>(
-                  <option key={cat} value={cat}>{cat}</option>
-                ))}
+                {categories
+                  .filter((c) => c !== "Tümü")
+                  .map((cat) => (
+                    <option key={cat} value={cat}>
+                      {cat}
+                    </option>
+                  ))}
               </select>
-              {errors.category &&(
-                <span className='form-error'>{errors.category.message}</span>
+              {errors.category && (
+                <span className="form-error">{errors.category.message}</span>
               )}
             </div>
             <div className="form-group">
@@ -57,12 +62,12 @@ export default function AddProductForm({categories,setView,onAddProduct}) {
                 type="text"
                 placeholder="https://"
                 className="form-input"
-                {...register('image',{
-                  required:'Görsel URL zorunludur.'
+                {...register("image", {
+                  required: "Görsel URL zorunludur.",
                 })}
               />
-               {errors.image &&(
-                <span className='form-error'>{errors.image.message}</span>
+              {errors.image && (
+                <span className="form-error">{errors.image.message}</span>
               )}
             </div>
             <div className="form-group">
@@ -71,16 +76,16 @@ export default function AddProductForm({categories,setView,onAddProduct}) {
                 type="number"
                 placeholder="Örn: 1450"
                 className="form-input"
-                {...register('price',{
-                  required:'Fiyat Zorunludur',
-                  min:{
-                    value:1,
-                    message:'Fiyat 0\'dan büyük olmalıdır'
-                  }
+                {...register("price", {
+                  required: "Fiyat Zorunludur",
+                  min: {
+                    value: 1,
+                    message: "Fiyat 0'dan büyük olmalıdır",
+                  },
                 })}
               />
-                {errors.price &&(
-                <span className='form-error'>{errors.price.message}</span>
+              {errors.price && (
+                <span className="form-error">{errors.price.message}</span>
               )}
             </div>
             <div className="form-group">
@@ -88,12 +93,12 @@ export default function AddProductForm({categories,setView,onAddProduct}) {
               <textarea
                 className="form-textarea"
                 placeholder="Ürün Detayları..."
-                {...register('description', {
-                    required: 'Açıklama zorunludur',
-                    minLength:{
-                        value:10,
-                        message: 'Açıklama en az 10 karakter olmalıdır'
-                    }
+                {...register("description", {
+                  required: "Açıklama Zorunludur",
+                  minLength: {
+                    value: 10,
+                    message: "Açıklama en az 10 karakter olmalıdır",
+                  },
                 })}
               />
               {errors.description && (
